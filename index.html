@@ -11,39 +11,64 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0d1117; /* Fondo oscuro tipo GitHub/Media */
-            color: #e5e7eb; /* Texto claro */
+            background-color: #f7f7f7; /* Fondo CLARO, limpio y moderno */
+            color: #333333; /* Texto oscuro */
             scroll-behavior: smooth;
         }
         .section-padding {
             padding-top: 5rem;
             padding-bottom: 5rem;
         }
-        /* Estilo para el botón de acento (como "En Vivo") */
-        .accent-button {
+        
+        /* Definición de la paleta KausariFilms basada en el logo:
+           - Base de Acento: Azul #007ACC
+           - Toques Multicolores: Rojo, Verde, Morado, Naranja
+        */
+
+        /* Estilo para el botón principal de la marca (Azul) */
+        .primary-button {
+            background-color: #007ACC; 
+            color: #ffffff;
+            transition: background-color 0.3s ease;
+        }
+        .primary-button:hover {
+            background-color: #005f99;
+        }
+
+        /* Estilo para el botón de acción "En Vivo" (Rojo del logo) */
+        .live-button {
             background-color: #ef4444; /* Rojo vibrante */
             color: #ffffff;
             transition: background-color 0.3s ease;
         }
-        .accent-button:hover {
+        .live-button:hover {
             background-color: #dc2626;
         }
+        
         /* Smooth scrolling para navegación */
         .nav-link {
-            transition: color 0.2s ease, border-bottom 0.2s ease;
+            transition: color 0.2s ease;
             cursor: pointer;
         }
         .nav-link:hover {
-            color: #3b82f6; /* Azul de acento para hover */
+            color: #007ACC; /* Azul de acento para hover */
+        }
+        
+        /* Estilo general de las tarjetas sobre fondo claro */
+        .card-base {
+            background-color: #ffffff; 
+            border: 1px solid #e0e0e0;
         }
         .card-glow {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .card-glow:hover {
             transform: translateY(-4px);
-            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3), 0 4px 6px -2px rgba(59, 130, 246, 0.1);
+            /* Sombra suave de los colores del logo */
+            box-shadow: 0 10px 15px -3px rgba(0, 122, 204, 0.2), 0 4px 6px -2px rgba(239, 68, 68, 0.1);
         }
-        /* Efecto de línea debajo del título para la sección principal */
+        
+        /* Efecto de línea debajo del título con el color primario */
         .title-line {
             position: relative;
         }
@@ -52,53 +77,59 @@
             display: block;
             width: 80px;
             height: 4px;
-            background-color: #3b82f6;
+            background-color: #007ACC; /* Azul */
             margin: 1rem auto 0;
             border-radius: 9999px;
         }
+        
+        /* Clases para los bordes multicolor (simulando la rueda del logo) */
+        .border-red-logo { border-color: #ef4444; }
+        .border-green-logo { border-color: #10b981; } /* Tailwind esmeralda-500 */
+        .border-purple-logo { border-color: #8b5cf6; } /* Tailwind violet-500 */
+        .border-orange-logo { border-color: #f97316; } /* Tailwind orange-500 */
 
     </style>
 </head>
 <body>
 
-    <!-- Barra de Navegación Fija -->
-    <header class="fixed top-0 left-0 right-0 bg-[#1f2937]/95 backdrop-blur-sm z-50 shadow-lg">
+    <!-- Barra de Navegación Fija sobre fondo claro -->
+    <header class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm z-50 shadow-md">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#inicio" class="text-2xl font-bold text-white tracking-widest">Kausari<span class="text-[#ef4444]">Films</span></a>
+            <a href="#inicio" class="text-2xl font-bold text-[#007ACC] tracking-widest">Kausari<span class="text-[#ef4444]">Films</span></a>
             <div class="space-x-4 hidden md:flex">
-                <a href="#sobre-nosotros" class="nav-link text-gray-300 hover:text-[#3b82f6]">Sobre Nosotros</a>
-                <a href="#mision-vision" class="nav-link text-gray-300 hover:text-[#3b82f6]">Misión & Visión</a>
-                <a href="#equipo" class="nav-link text-gray-300 hover:text-[#3b82f6]">Equipo</a>
-                <a href="#servicios" class="nav-link text-gray-300 hover:text-[#3b82f6]">Servicios</a>
-                <a href="#contacto" class="nav-link text-gray-300 hover:text-[#3b82f6]">Contacto</a>
+                <a href="#sobre-nosotros" class="nav-link text-gray-700 hover:text-[#007ACC]">Sobre Nosotros</a>
+                <a href="#mision-vision" class="nav-link text-gray-700 hover:text-[#007ACC]">Misión & Visión</a>
+                <a href="#equipo" class="nav-link text-gray-700 hover:text-[#007ACC]">Equipo</a>
+                <a href="#servicios" class="nav-link text-gray-700 hover:text-[#007ACC]">Servicios</a>
+                <a href="#contacto" class="nav-link text-gray-700 hover:text-[#007ACC]">Contacto</a>
             </div>
-            <a href="https://www.facebook.com/KausariTV" target="_blank" class="px-4 py-2 text-sm font-semibold rounded-full accent-button hidden sm:block">
+            <a href="https://www.facebook.com/KausariTV" target="_blank" class="px-4 py-2 text-sm font-semibold rounded-full live-button hidden sm:block shadow-lg">
                 ¡Ver En Vivo!
             </a>
             <!-- Menú móvil (simplificado) -->
-            <button class="md:hidden text-white text-2xl">&#9776;</button>
+            <button class="md:hidden text-[#007ACC] text-2xl">&#9776;</button>
         </nav>
     </header>
 
-    <!-- Sección Hero / Inicio -->
+    <!-- Sección Hero / Inicio (Fondo claro con imagen de acento) -->
     <section id="inicio" class="h-screen flex items-center justify-center bg-cover bg-center" 
-             style="background-image: linear-gradient(rgba(13, 17, 23, 0.9), rgba(13, 17, 23, 0.9)), url('https://placehold.co/1920x1080/1f2937/ffffff?text=Fondo+de+Estudio+Audiovisual');">
+             style="background-image: linear-gradient(rgba(247, 247, 247, 0.95), rgba(247, 247, 247, 0.95)), url('https://placehold.co/1920x1080/e5e7eb/333333?text=Fondo+de+Estudio+Audiovisual');">
         <div class="text-center px-6">
-            <p class="text-sm font-bold tracking-widest uppercase text-[#3b82f6] mb-3 flex items-center justify-center">
+            <p class="text-sm font-bold tracking-widest uppercase text-[#007ACC] mb-3 flex items-center justify-center">
                 <svg class="w-4 h-4 mr-2 animate-pulse text-[#ef4444]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
                 EN VIVO Y EN CONTEXTO
             </p>
-            <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-4 leading-tight">
-                El Pulso de la <span class="text-[#3b82f6]">Comunidad</span>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-[#333333] mb-4 leading-tight">
+                El Pulso de la <span class="text-[#007ACC]">Comunidad</span>
             </h1>
-            <p class="text-lg md:text-xl text-gray-400 mb-8 max-w-3xl mx-auto">
+            <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
                 KausariFilms: Líderes en transmisiones en vivo, cubriendo el día a día, noticias de impacto y la vida social de nuestra región. Conectamos negocios y personas.
             </p>
             <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <a href="#servicios" class="px-8 py-3 rounded-full text-lg font-semibold bg-[#3b82f6] hover:bg-blue-600 transition duration-300 shadow-xl">
+                <a href="#servicios" class="px-8 py-3 rounded-full text-lg font-semibold primary-button transition duration-300 shadow-xl">
                     Impulsa tu Marca
                 </a>
-                <a href="#contacto" class="px-8 py-3 rounded-full text-lg font-semibold bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#0d1117] transition duration-300">
+                <a href="#contacto" class="px-8 py-3 rounded-full text-lg font-semibold bg-transparent border-2 border-[#333333] text-[#333333] hover:bg-[#007ACC] hover:text-white transition duration-300">
                     Hablemos
                 </a>
             </div>
@@ -106,25 +137,25 @@
     </section>
 
     <!-- Sección Sobre Nosotros -->
-    <section id="sobre-nosotros" class="section-padding bg-[#161b22]">
+    <section id="sobre-nosotros" class="section-padding bg-white">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold mb-4 title-line">Sobre KausariFilms</h2>
-            <p class="text-gray-400 max-w-4xl mx-auto mb-12 text-lg">
+            <h2 class="text-4xl font-bold mb-4 title-line text-[#333333]">Sobre KausariFilms</h2>
+            <p class="text-gray-600 max-w-4xl mx-auto mb-12 text-lg">
                 Somos más que una productora audiovisual; somos el canal de comunicación que vive y respira con la comunidad. Desde la cobertura inmediata de eventos cruciales hasta la promoción efectiva de cooperativas y empresas, KausariFilms es sinónimo de presencia y credibilidad local. Nuestra pasión es contar historias que importan, en tiempo real.
             </p>
 
             <div class="grid md:grid-cols-2 gap-8 text-left">
-                <!-- Misión -->
-                <div id="mision-vision" class="bg-[#1f2937] p-8 rounded-xl shadow-2xl border-t-4 border-[#3b82f6] card-glow">
-                    <h3 class="text-3xl font-semibold mb-4 text-[#3b82f6]">Misión</h3>
-                    <p class="text-gray-300">
+                <!-- Misión con borde de color -->
+                <div id="mision-vision" class="card-base p-8 rounded-xl shadow-lg border-t-4 border-green-logo card-glow">
+                    <h3 class="text-3xl font-semibold mb-4 text-[#10b981]">Misión</h3>
+                    <p class="text-gray-700">
                         Proporcionar una cobertura audiovisual **instantánea, veraz y de alto impacto** de los sucesos diarios de nuestra zona, consolidándonos como el principal medio de información local en vivo. Además, conectar eficientemente a las empresas y cooperativas con su público objetivo a través de estrategias de contenido creativo y publicidad efectiva.
                     </p>
                 </div>
-                <!-- Visión -->
-                <div class="bg-[#1f2937] p-8 rounded-xl shadow-2xl border-t-4 border-[#ef4444] card-glow">
-                    <h3 class="text-3xl font-semibold mb-4 text-[#ef4444]">Visión</h3>
-                    <p class="text-gray-300">
+                <!-- Visión con borde de color -->
+                <div class="card-base p-8 rounded-xl shadow-lg border-t-4 border-purple-logo card-glow">
+                    <h3 class="text-3xl font-semibold mb-4 text-[#8b5cf6]">Visión</h3>
+                    <p class="text-gray-700">
                         Ser reconocidos a nivel nacional como la plataforma de medios digitales y *streaming* más influyente de la región, expandiendo nuestra capacidad de cobertura y ofreciendo soluciones de marketing audiovisual que impulsen el desarrollo económico y social de nuestros clientes.
                     </p>
                 </div>
@@ -132,45 +163,39 @@
         </div>
     </section>
 
-    <!-- Sección Equipo / Personal -->
-    <section id="equipo" class="section-padding bg-[#0d1117]">
+    <!-- Sección Equipo / Personal (Fondo gris suave) -->
+    <section id="equipo" class="section-padding bg-[#e5e7eb]">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold mb-4 text-white title-line">Nuestro Equipo</h2>
-            <p class="text-gray-400 max-w-4xl mx-auto mb-12 text-lg">
+            <h2 class="text-4xl font-bold mb-4 text-[#333333] title-line">Nuestro Equipo</h2>
+            <p class="text-gray-600 max-w-4xl mx-auto mb-12 text-lg">
                 Detrás de cada transmisión y cada campaña exitosa hay un equipo de profesionales apasionados por la comunicación y el impacto local.
             </p>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-                <!-- Miembro 1 -->
-                <div class="bg-[#1f2937] p-6 rounded-xl shadow-xl card-glow border-2 border-transparent hover:border-[#3b82f6]">
-                    <img src="https://placehold.co/150x150/0d1117/ffffff?text=Director" alt="
-
-[Image of Director]
-" class="w-36 h-36 rounded-full mx-auto object-cover mb-4 border-4 border-[#ef4444]">
-                    <h4 class="text-xl font-semibold text-white">Juan Pérez</h4>
-                    <p class="text-sm text-[#3b82f6] font-medium mb-3">Director General & Presentador Principal</p>
-                    <p class="text-gray-400 text-sm">
+                <!-- Miembro 1 (Borde Rojo) -->
+                <div class="card-base p-6 rounded-xl shadow-lg card-glow border-2 border-transparent hover:border-red-logo">
+                    <img src="https://placehold.co/150x150/f0f0f0/333333?text=Director" alt="" class="w-36 h-36 rounded-full mx-auto object-cover mb-4 border-4 border-red-logo">
+                    <h4 class="text-xl font-semibold text-[#333333]">Juan Pérez</h4>
+                    <p class="text-sm text-[#007ACC] font-medium mb-3">Director General & Presentador Principal</p>
+                    <p class="text-gray-600 text-sm">
                         Líder y voz de KausariFilms. Su visión estratégica mantiene la marca relevante, mientras que su carisma garantiza la conexión con el público en cada transmisión.
                     </p>
                 </div>
-                <!-- Miembro 2 -->
-                <div class="bg-[#1f2937] p-6 rounded-xl shadow-xl card-glow border-2 border-transparent hover:border-[#3b82f6]">
-                    <img src="https://placehold.co/150x150/0d1117/ffffff?text=Productor" alt="
-
-[Image of Producer]
-" class="w-36 h-36 rounded-full mx-auto object-cover mb-4 border-4 border-[#ef4444]">
-                    <h4 class="text-xl font-semibold text-white">María López</h4>
-                    <p class="text-sm text-[#3b82f6] font-medium mb-3">Jefa de Producción & Logística</p>
-                    <p class="text-gray-400 text-sm">
+                <!-- Miembro 2 (Borde Azul) -->
+                <div class="card-base p-6 rounded-xl shadow-lg card-glow border-2 border-transparent hover:border-[#007ACC]">
+                    <img src="https://placehold.co/150x150/f0f0f0/333333?text=Productor" alt="" class="w-36 h-36 rounded-full mx-auto object-cover mb-4 border-4 border-[#007ACC]">
+                    <h4 class="text-xl font-semibold text-[#333333]">María López</h4>
+                    <p class="text-sm text-[#007ACC] font-medium mb-3">Jefa de Producción & Logística</p>
+                    <p class="text-gray-600 text-sm">
                         La mente organizadora detrás de las operaciones. María asegura que cada transmisión en vivo y cada proyecto publicitario se ejecuten sin fallas, sin importar las circunstancias.
                     </p>
                 </div>
-                <!-- Miembro 3 -->
-                <div class="bg-[#1f2937] p-6 rounded-xl shadow-xl card-glow border-2 border-transparent hover:border-[#3b82f6]">
-                    <img src="https://placehold.co/150x150/0d1117/ffffff?text=Marketing" alt="" class="w-36 h-36 rounded-full mx-auto object-cover mb-4 border-4 border-[#ef4444]">
-                    <h4 class="text-xl font-semibold text-white">Carlos Romero</h4>
-                    <p class="text-sm text-[#3b82f6] font-medium mb-3">Especialista en Marketing Digital</p>
-                    <p class="text-gray-400 text-sm">
+                <!-- Miembro 3 (Borde Naranja) -->
+                <div class="card-base p-6 rounded-xl shadow-lg card-glow border-2 border-transparent hover:border-orange-logo">
+                    <img src="https://placehold.co/150x150/f0f0f0/333333?text=Marketing" alt="" class="w-36 h-36 rounded-full mx-auto object-cover mb-4 border-4 border-orange-logo">
+                    <h4 class="text-xl font-semibold text-[#333333]">Carlos Romero</h4>
+                    <p class="text-sm text-[#007ACC] font-medium mb-3">Especialista en Marketing Digital</p>
+                    <p class="text-gray-600 text-sm">
                         Encargado de la publicidad y alianzas estratégicas. Carlos diseña campañas que realmente convierten, uniendo la credibilidad de KausariFilms con los objetivos comerciales de nuestros clientes.
                     </p>
                 </div>
@@ -179,50 +204,50 @@
     </section>
 
     <!-- Sección Servicios (Publicidad & Live Streaming) -->
-    <section id="servicios" class="section-padding bg-[#161b22]">
+    <section id="servicios" class="section-padding bg-white">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold mb-4 text-white title-line">Nuestros Servicios</h2>
-            <p class="text-gray-400 max-w-4xl mx-auto mb-12 text-lg">
+            <h2 class="text-4xl font-bold mb-4 text-[#333333] title-line">Nuestros Servicios</h2>
+            <p class="text-gray-600 max-w-4xl mx-auto mb-12 text-lg">
                 Ofrecemos soluciones duales que aprovechan nuestra audiencia en vivo para generar impacto real en su negocio.
             </p>
 
             <div class="grid md:grid-cols-2 gap-10 text-left">
-                <!-- Servicio 1: Live Streaming & Noticias -->
-                <div class="bg-[#1f2937] p-8 rounded-xl shadow-2xl card-glow">
+                <!-- Servicio 1: Live Streaming & Noticias (Borde Rojo) -->
+                <div class="card-base p-8 rounded-xl shadow-lg card-glow border-l-4 border-red-logo">
                     <div class="flex items-center mb-4">
                         <span class="text-4xl text-[#ef4444] mr-3">📹</span>
-                        <h3 class="text-2xl font-semibold text-white">Cobertura en Vivo 24/7</h3>
+                        <h3 class="text-2xl font-semibold text-[#333333]">Cobertura en Vivo 24/7</h3>
                     </div>
-                    <p class="text-gray-300 mb-4">
+                    <p class="text-gray-700 mb-4">
                         Somos su fuente de información local más rápida. Cubrimos:
                     </p>
-                    <ul class="space-y-2 text-gray-400 list-disc list-inside ml-4">
+                    <ul class="space-y-2 text-gray-600 list-disc list-inside ml-4">
                         <li>Sucesos y Noticias de Última Hora</li>
                         <li>Eventos Sociales y Fiestas Locales</li>
                         <li>Entrevistas de Impacto Comunitario</li>
                         <li>Reportajes de Interés General</li>
                     </ul>
-                    <a href="https://www.facebook.com/KausariTV" target="_blank" class="mt-4 inline-block text-[#3b82f6] hover:text-[#ef4444] font-medium">
+                    <a href="https://www.facebook.com/KausariTV" target="_blank" class="mt-4 inline-block text-[#007ACC] hover:text-[#ef4444] font-medium">
                         Ver nuestro último LIVE →
                     </a>
                 </div>
 
-                <!-- Servicio 2: Publicidad Audiovisual -->
-                <div class="bg-[#1f2937] p-8 rounded-xl shadow-2xl card-glow">
+                <!-- Servicio 2: Publicidad Audiovisual (Borde Verde) -->
+                <div class="card-base p-8 rounded-xl shadow-lg card-glow border-l-4 border-green-logo">
                     <div class="flex items-center mb-4">
-                        <span class="text-4xl text-[#3b82f6] mr-3">🚀</span>
-                        <h3 class="text-2xl font-semibold text-white">Publicidad y Promoción Empresarial</h3>
+                        <span class="text-4xl text-[#10b981] mr-3">🚀</span>
+                        <h3 class="text-2xl font-semibold text-[#333333]">Publicidad y Promoción Empresarial</h3>
                     </div>
-                    <p class="text-gray-300 mb-4">
+                    <p class="text-gray-700 mb-4">
                         Aproveche nuestra audiencia masiva para posicionar su marca. Servicios:
                     </p>
-                    <ul class="space-y-2 text-gray-400 list-disc list-inside ml-4">
+                    <ul class="space-y-2 text-gray-600 list-disc list-inside ml-4">
                         <li>Spots Publicitarios durante Transmisiones</li>
                         <li>Videos Promocionales para Cooperativas y Empresas</li>
                         <li>Campañas de *Branding* en Redes Sociales</li>
                         <li>Transmisiones Patrocinadas de Eventos</li>
                     </ul>
-                    <a href="#contacto" class="mt-4 inline-block text-[#3b82f6] hover:text-[#ef4444] font-medium">
+                    <a href="#contacto" class="mt-4 inline-block text-[#007ACC] hover:text-[#ef4444] font-medium">
                         Solicitar un Paquete Publicitario →
                     </a>
                 </div>
@@ -230,40 +255,40 @@
         </div>
     </section>
 
-    <!-- Sección Contacto -->
-    <section id="contacto" class="section-padding bg-[#0d1117]">
+    <!-- Sección Contacto (Fondo gris suave) -->
+    <section id="contacto" class="section-padding bg-[#e5e7eb]">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold mb-4 text-white title-line">Conversemos</h2>
-            <p class="text-gray-400 max-w-4xl mx-auto mb-12 text-lg">
+            <h2 class="text-4xl font-bold mb-4 text-[#333333] title-line">Conversemos</h2>
+            <p class="text-gray-600 max-w-4xl mx-auto mb-12 text-lg">
                 ¿Tienes una noticia? ¿Buscas promocionar tu negocio? Contáctanos hoy mismo.
             </p>
 
-            <div class="max-w-xl mx-auto bg-[#1f2937] p-8 rounded-xl shadow-2xl">
+            <div class="max-w-xl mx-auto card-base p-8 rounded-xl shadow-2xl">
                 <form onsubmit="event.preventDefault(); alert('¡Gracias por tu mensaje! Pronto nos pondremos en contacto.');">
                     <div class="mb-4">
-                        <input type="text" placeholder="Nombre Completo" required class="w-full p-3 rounded-lg bg-[#2d3748] border border-gray-600 text-white placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500">
+                        <input type="text" placeholder="Nombre Completo" required class="w-full p-3 rounded-lg bg-gray-100 border border-gray-300 text-[#333333] placeholder-gray-500 focus:ring-[#007ACC] focus:border-[#007ACC]">
                     </div>
                     <div class="mb-4">
-                        <input type="email" placeholder="Correo Electrónico" required class="w-full p-3 rounded-lg bg-[#2d3748] border border-gray-600 text-white placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500">
+                        <input type="email" placeholder="Correo Electrónico" required class="w-full p-3 rounded-lg bg-gray-100 border border-gray-300 text-[#333333] placeholder-gray-500 focus:ring-[#007ACC] focus:border-[#007ACC]">
                     </div>
                     <div class="mb-6">
-                        <textarea placeholder="Tu Mensaje o Requerimiento Publicitario" rows="4" required class="w-full p-3 rounded-lg bg-[#2d3748] border border-gray-600 text-white placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500"></textarea>
+                        <textarea placeholder="Tu Mensaje o Requerimiento Publicitario" rows="4" required class="w-full p-3 rounded-lg bg-gray-100 border border-gray-300 text-[#333333] placeholder-gray-500 focus:ring-[#007ACC] focus:border-[#007ACC]"></textarea>
                     </div>
-                    <button type="submit" class="w-full px-4 py-3 rounded-lg font-semibold accent-button hover:bg-[#dc2626] transition duration-300">
+                    <button type="submit" class="w-full px-4 py-3 rounded-lg font-semibold primary-button hover:bg-[#005f99] transition duration-300 shadow-md">
                         Enviar Mensaje
                     </button>
                 </form>
 
-                <div class="mt-8 pt-6 border-t border-gray-700">
-                    <h4 class="text-xl font-semibold mb-3 text-white">Nuestras Redes</h4>
+                <div class="mt-8 pt-6 border-t border-gray-300">
+                    <h4 class="text-xl font-semibold mb-3 text-[#333333]">Nuestras Redes</h4>
                     <div class="flex justify-center space-x-6">
-                        <!-- Facebook -->
-                        <a href="https://www.facebook.com/KausariTV" target="_blank" class="text-gray-400 hover:text-[#3b82f6] transition duration-300 text-3xl">
+                        <!-- Facebook (Color Azul) -->
+                        <a href="https://www.facebook.com/KausariTV" target="_blank" class="text-gray-500 hover:text-[#007ACC] transition duration-300 text-3xl">
                             <!-- SVG para Facebook -->
                             <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14 12v2h4v2h-4v4h-2v-4H8v-2h4v-2h-4V8h4V4h2v4h4v2h-4zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 16h-2v-2h2v2zm2-4h-2v-2h2v2zm0-4h-2V8h2v2zm4 4h-2v-2h2v2z"/></svg>
                         </a>
-                        <!-- Placeholder para otra red (ej. Instagram) -->
-                        <a href="#" class="text-gray-400 hover:text-[#3b82f6] transition duration-300 text-3xl">
+                        <!-- Placeholder para otra red (ej. Instagram - Color Morado) -->
+                        <a href="#" class="text-gray-500 hover:text-[#8b5cf6] transition duration-300 text-3xl">
                             <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.184 3.164a2.5 2.5 0 013.535 3.535l-7.227 7.228a2.5 2.5 0 01-3.535 0l-1.5-1.5a.5.5 0 01.707-.707l1.5 1.5a1.5 1.5 0 002.121 0l7.227-7.228a1.5 1.5 0 00-2.121-2.121L12 9.879l-4.243-4.242a.5.5 0 01.707-.707l4.243 4.242 3.184-3.184z"/></svg>
                         </a>
                     </div>
@@ -273,7 +298,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-[#161b22] py-8 border-t border-gray-700">
+    <footer class="bg-white py-8 border-t border-gray-300">
         <div class="container mx-auto px-6 text-center text-sm text-gray-500">
             <p>&copy; 2025 KausariFilms. Todos los derechos reservados. | Hecho con pasión por el periodismo local.</p>
         </div>
@@ -314,7 +339,7 @@
 
             const content = document.createElement('div');
             content.style.cssText = `
-                background: #1f2937; color: #e5e7eb; padding: 25px; 
+                background: white; color: #333333; padding: 25px; 
                 border-radius: 12px; max-width: 90%; text-align: center;
                 box-shadow: 0 10px 20px rgba(0,0,0,0.5);
             `;
@@ -327,12 +352,12 @@
             const closeButton = document.createElement('button');
             closeButton.textContent = 'Cerrar';
             closeButton.style.cssText = `
-                background: #3b82f6; color: white; padding: 10px 20px; 
+                background: #007ACC; color: white; padding: 10px 20px; 
                 border: none; border-radius: 6px; cursor: pointer;
                 transition: background 0.3s;
             `;
-            closeButton.onmouseover = function() { this.style.backgroundColor = '#2563eb'; };
-            closeButton.onmouseout = function() { this.style.backgroundColor = '#3b82f6'; };
+            closeButton.onmouseover = function() { this.style.backgroundColor = '#005f99'; };
+            closeButton.onmouseout = function() { this.style.backgroundColor = '#007ACC'; };
             
             closeButton.onclick = function() {
                 document.body.removeChild(modal);
